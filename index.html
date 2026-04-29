@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCISMUN - Santa Cruz International School Model United Nations</title>
+    <title>SCISMUN - Beyond Borders</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,10 +20,10 @@
                 extend: {
                     colors: {
                         mun: {
-                            blue: '#0055A4', // Classic UN-style blue
-                            dark: '#0A192F', // Deep navy for text/footer
-                            gold: '#D4AF37', // Gold accent
-                            light: '#F3F4F6' // Light gray background
+                            blue: '#0A2463', // Updated custom blue
+                            dark: '#051232', // Deepened navy for contrast
+                            gold: '#F4B942', // Updated custom gold/yellow
+                            light: '#F8FAFC' // Light gray background
                         }
                     },
                     fontFamily: {
@@ -39,16 +39,22 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Custom Styles for Polish */
+        /* Custom Styles */
         .glass-nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
         }
         .hero-pattern {
-            background-image: linear-gradient(rgba(10, 25, 47, 0.7), rgba(0, 85, 164, 0.8)), url('https://images.unsplash.com/photo-1528605105345-5344ea20e269?q=80&w=2070&auto=format&fit=crop');
+            background-image: linear-gradient(rgba(5, 18, 50, 0.8), rgba(10, 36, 99, 0.85)), url('https://images.unsplash.com/photo-1528605105345-5344ea20e269?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+        }
+        .connection-pattern {
+            background-color: #0A2463;
+            background-image: radial-gradient(#F4B942 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
         .card-hover {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -59,14 +65,14 @@
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-mun-light antialiased selection:bg-mun-gold selection:text-white">
+<body class="font-sans text-gray-800 bg-mun-light antialiased selection:bg-mun-gold selection:text-mun-dark">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <div class="w-10 h-10 bg-mun-blue rounded-full flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg">
                         S
                     </div>
@@ -74,16 +80,16 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-mun-blue font-medium transition-colors">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-mun-blue font-medium transition-colors">About</a>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#about" class="text-gray-600 hover:text-mun-blue font-medium transition-colors">¿Qué es SCISMUN?</a>
+                    <a href="#theme" class="text-gray-600 hover:text-mun-blue font-medium transition-colors">Theme</a>
+                    <a href="#secretariat" class="text-gray-600 hover:text-mun-blue font-medium transition-colors">Secretariat</a>
                     <a href="#committees" class="text-gray-600 hover:text-mun-blue font-medium transition-colors">Committees</a>
-                    <a href="#schedule" class="text-gray-600 hover:text-mun-blue font-medium transition-colors">Schedule</a>
-                    <a href="#register" class="bg-mun-blue hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-medium transition-colors shadow-md hover:shadow-lg">Register Now</a>
+                    <a href="#countdown-sec" class="bg-mun-blue hover:bg-opacity-90 text-white px-5 py-2 rounded-full font-medium transition-all shadow-md hover:shadow-lg">Countdown</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-gray-600 hover:text-mun-blue focus:outline-none p-2">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
@@ -92,13 +98,13 @@
         </div>
 
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
             <div class="px-4 pt-2 pb-6 space-y-2 shadow-inner">
-                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mun-blue hover:bg-gray-50 mobile-link">Home</a>
-                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mun-blue hover:bg-gray-50 mobile-link">About</a>
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mun-blue hover:bg-gray-50 mobile-link">¿Qué es SCISMUN?</a>
+                <a href="#theme" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mun-blue hover:bg-gray-50 mobile-link">Theme</a>
+                <a href="#secretariat" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mun-blue hover:bg-gray-50 mobile-link">Secretariat</a>
                 <a href="#committees" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mun-blue hover:bg-gray-50 mobile-link">Committees</a>
-                <a href="#schedule" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-mun-blue hover:bg-gray-50 mobile-link">Schedule</a>
-                <a href="#register" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-mun-blue text-white hover:bg-blue-700 mobile-link">Register Now</a>
+                <a href="#countdown-sec" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-mun-blue text-white hover:bg-opacity-90 mobile-link">Countdown</a>
             </div>
         </div>
     </nav>
@@ -106,87 +112,183 @@
     <!-- Hero Section -->
     <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-pattern min-h-[90vh] flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-semibold tracking-wider mb-6 border border-white/30">
+            <span class="inline-block py-1 px-4 rounded-full bg-white/10 backdrop-blur-md text-mun-gold border border-mun-gold/30 text-sm font-bold tracking-wider mb-6">
                 SANTA CRUZ INTERNATIONAL SCHOOL
             </span>
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                Empowering the <br class="hidden md:block"/> Leaders of Tomorrow
+                SCISMUN <br class="hidden md:block"/> Beyond Borders
             </h1>
-            <p class="mt-4 text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto font-light mb-10 drop-shadow">
-                Join us for the premier Model United Nations conference in Santa Cruz de la Sierra, Bolivia. Debate, negotiate, and shape the future.
+            <p class="mt-4 text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto font-light mb-10 drop-shadow">
+                Welcome to the Third Annual SCIS Model United Nations - where dialogue transcends borders, challenges meet collaboration, and global solutions begin.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#register" class="bg-mun-gold hover:bg-yellow-500 text-mun-dark px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    Delegate Registration
+                <a href="#countdown-sec" class="bg-mun-gold hover:bg-yellow-500 text-mun-dark px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    SCISMUN Countdown
                 </a>
                 <a href="#committees" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/50 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Explore Committees
                 </a>
             </div>
-            
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-                <div class="text-white flex flex-col items-center">
-                    <i data-lucide="calendar" class="w-8 h-8 mb-2 text-mun-gold"></i>
-                    <span class="font-bold text-lg">October 15-17, 2026</span>
-                    <span class="text-sm text-gray-300">Three Days of Debate</span>
+        </div>
+    </section>
+
+    <!-- ¿Qué es SCISMUN? -->
+    <section id="what-is" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-sm font-bold tracking-widest text-mun-gold uppercase mb-2">Un modelo de las naciones unidas</h2>
+            <h3 class="text-3xl md:text-4xl font-serif font-bold text-mun-blue mb-8">¿Qué es SCISMUN?</h3>
+            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                Es una simulación académica y educativa de las Naciones Unidas que brinda a los participantes la oportunidad de sumergirse en el mundo de la diplomacia, la política internacional y la resolución de conflictos.
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                El objetivo principal de un MUN es promover el entendimiento de los desafíos mundiales y la importancia de la diplomacia como medio para abordarlos. Además, brinda a los participantes la oportunidad de conocer a personas con intereses similares, construir amistades y establecer redes profesionales que pueden durar toda la vida.
+            </p>
+        </div>
+    </section>
+
+    <!-- Theme Section -->
+    <section id="theme" class="py-20 bg-mun-light border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                    <span class="inline-block px-3 py-1 bg-blue-50 text-mun-blue text-xs font-bold uppercase tracking-widest rounded-full mb-6 w-fit">2026 Conference Theme</span>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-mun-dark mb-6">Beyond Borders</h3>
+                    <div class="w-16 h-1 bg-mun-gold mb-8"></div>
+                    <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+                        “Beyond Borders” is the theme of this year’s SCISMUN conference. Its predecessor, “Voices of Our Youth,” highlighted the power of dialogue and peaceful negotiation over violence and aggression in addressing global challenges. This year, we build upon that foundation.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+                        The world we live in has evolved—and so have the challenges we face. “Beyond Borders” recognizes this shift toward a more interconnected, modern, and technological era. It calls on us to move past divisions, to think collaboratively, and to build bridges that lead to meaningful, global solutions.
+                    </p>
+                    <p class="text-mun-blue font-bold text-xl mt-4">
+                        Welcome to a new SCISMUN.
+                    </p>
                 </div>
-                <div class="text-white flex flex-col items-center border-t md:border-t-0 md:border-l border-white/20 pt-4 md:pt-0">
-                    <i data-lucide="map-pin" class="w-8 h-8 mb-2 text-mun-gold"></i>
-                    <span class="font-bold text-lg">SCIS Campus</span>
-                    <span class="text-sm text-gray-300">Santa Cruz, Bolivia</span>
-                </div>
-                <div class="text-white flex flex-col items-center border-t md:border-t-0 md:border-l border-white/20 pt-4 md:pt-0">
-                    <i data-lucide="users" class="w-8 h-8 mb-2 text-mun-gold"></i>
-                    <span class="font-bold text-lg">300+ Delegates</span>
-                    <span class="text-sm text-gray-300">From Across the Region</span>
+                <div class="lg:w-1/2 bg-mun-blue relative min-h-[400px]">
+                    <div class="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-50" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=2033&auto=format&fit=crop');"></div>
+                    <div class="absolute inset-0 flex items-center justify-center p-8">
+                        <div class="border-4 border-mun-gold p-8 text-center backdrop-blur-sm bg-mun-dark/40 rounded-xl">
+                            <h4 class="text-3xl font-serif font-bold text-white mb-2">BEYOND BORDERS</h4>
+                            <p class="text-mun-gold font-medium tracking-wide">United Challenges, Shared Solutions</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Welcome / About Section -->
+    <!-- Secretary-General Letter -->
     <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-sm font-bold tracking-widest text-mun-blue uppercase mb-2">Welcome Address</h2>
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-mun-dark mb-6">Letter from the Secretary-General</h3>
-                    <div class="prose prose-lg text-gray-600">
-                        <p class="mb-4">
-                            Honorable Delegates, Respected Directors, and Distinguished Guests,
-                        </p>
-                        <p class="mb-4">
-                            It is with immense pleasure and profound honor that I welcome you to the annual Santa Cruz International School Model United Nations (SCISMUN). In an era defined by rapid change and complex global challenges, the need for diplomatic dialogue and innovative problem-solving has never been greater.
-                        </p>
-                        <p class="mb-4">
-                            This year's theme focuses on sustainable development and global cooperation. We have meticulously crafted committees that will challenge you to think critically, negotiate passionately, and draft resolutions that reflect a deep understanding of international relations.
-                        </p>
-                        <p class="mb-6">
-                            Whether you are a seasoned delegate or attending your very first conference, SCISMUN promises an environment of rigorous debate, cultural exchange, and lasting friendships. I look forward to witnessing your brilliance in committee sessions.
-                        </p>
-                        <div class="flex items-center gap-4 mt-8 pt-6 border-t border-gray-100">
-                            <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 overflow-hidden">
-                                <i data-lucide="user" class="w-8 h-8"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-mun-dark text-lg">[Name Placeholder]</h4>
-                                <p class="text-mun-blue font-medium text-sm">Secretary-General, SCISMUN</p>
-                            </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-sm font-bold tracking-widest text-center text-mun-gold uppercase mb-2">Welcome Address</h2>
+            <h3 class="text-3xl md:text-4xl text-center font-serif font-bold text-mun-blue mb-12">Letter from the Secretary-General</h3>
+            
+            <div class="prose prose-lg text-gray-700 mx-auto bg-gray-50 p-8 md:p-12 rounded-2xl border border-gray-100 relative">
+                <i data-lucide="quote" class="absolute top-6 left-6 w-12 h-12 text-gray-200"></i>
+                <div class="relative z-10">
+                    <p class="mb-4 font-medium">Welcome to SCISMUN, the Model United Nations of Santa Cruz International School.</p>
+                    <p class="mb-4">
+                        It is an honor to serve as President of a community that brings together students who are not only passionate about global affairs, but also committed to understanding the perspectives behind them. At SCISMUN, we believe that diplomacy is not just about representing a country it is about learning how to listen, to question, and to work collaboratively toward meaningful solutions.
+                    </p>
+                    <p class="mb-4">
+                        In today's world, challenges such as climate change, conflict, and inequality remind us that no nation stands alone. Through debate and dialogue, our delegates step into the roles of global leaders, tackling complex issues while developing the skills of negotiation, critical thinking, and respectful communication.
+                    </p>
+                    <p class="mb-4">
+                        But beyond policy and procedure, SCISMUN is also about people. It is about creating a space where students feel empowered to share their ideas, challenge assumptions, and grow into confident, globally minded individuals. Whether you are joining us for the first time or returning with experience, your voice matters here.
+                    </p>
+                    <p class="mb-8">
+                        As you explore our website and learn more about our conferences and initiatives, I invite you to see SCISMUN not just as an academic activity, but as a platform for youth leadership and global engagement. Together, we are not only simulating diplomacy we are shaping the mindset of the next generation of leaders.
+                    </p>
+                    
+                    <div class="flex items-center gap-4 pt-6 border-t border-gray-200">
+                        <img src="https://ui-avatars.com/api/?name=Jose+Ernesto+Loayza&background=0A2463&color=F4B942&size=128" alt="Jose Ernesto Loayza" class="w-16 h-16 rounded-full shadow-md">
+                        <div>
+                            <h4 class="font-bold text-mun-dark text-lg">Jose Ernesto Loayza</h4>
+                            <p class="text-mun-gold font-bold text-sm tracking-wide">Secretary-General, SCISMUN</p>
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="absolute inset-0 bg-mun-blue transform translate-x-4 translate-y-4 rounded-2xl opacity-20"></div>
-                    <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=1974&auto=format&fit=crop" alt="Students debating" class="relative rounded-2xl shadow-xl w-full object-cover h-[500px] z-10">
-                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-10 h-10 bg-mun-gold rounded-full flex items-center justify-center text-white">
-                                <i data-lucide="award" class="w-5 h-5"></i>
-                            </div>
-                            <span class="font-bold text-mun-dark">Excellence in Debate</span>
-                        </div>
-                        <p class="text-sm text-gray-500">Fostering critical thinking and public speaking skills since our inception.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secretariat Section -->
+    <section id="secretariat" class="py-20 bg-mun-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold tracking-widest text-mun-gold uppercase mb-2">Leadership</h2>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-white">Secretariado SCISMUN 2026</h3>
+                <div class="w-24 h-1 bg-mun-gold mx-auto mt-6"></div>
+            </div>
+
+            <!-- Top Tier (SG) -->
+            <div class="flex justify-center mb-12">
+                <div class="text-center group">
+                    <div class="w-32 h-32 mx-auto rounded-full border-4 border-mun-gold overflow-hidden mb-4 shadow-xl transform transition group-hover:scale-105">
+                        <img src="https://ui-avatars.com/api/?name=Jose+Ernesto+Loayza&background=F4B942&color=0A2463&size=200" alt="Jose Ernesto Loayza" class="w-full h-full object-cover">
                     </div>
+                    <h4 class="text-xl font-bold">Jose Ernesto Loayza</h4>
+                    <p class="text-mun-gold font-medium">Secretario General</p>
+                </div>
+            </div>
+
+            <!-- Secretariat Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Samira+Lopez&background=0A2463&color=fff&size=200" alt="Samira Lopez" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Samira Lopez</h4>
+                    <p class="text-sm text-gray-400">Secretaria Adjunta</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Tamara+Mansilla&background=0A2463&color=fff&size=200" alt="Tamara Mansilla" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Tamara Mansilla</h4>
+                    <p class="text-sm text-gray-400">Secretaria Adjunta</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Valeria+Pineda&background=0A2463&color=fff&size=200" alt="Valeria Pineda" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Valeria Pineda</h4>
+                    <p class="text-sm text-gray-400">Secretaria Académica</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Nicolas+Navia&background=0A2463&color=fff&size=200" alt="Nicolas Navia" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Nicolas Navia</h4>
+                    <p class="text-sm text-gray-400">Coordinador de Logística</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Josefina+Milan&background=0A2463&color=fff&size=200" alt="Josefina Milan" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Josefina Milan</h4>
+                    <p class="text-sm text-gray-400">Sec. de Asuntos Internos</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Adrian+Terceros&background=0A2463&color=fff&size=200" alt="Adrian Terceros" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Adrian Terceros</h4>
+                    <p class="text-sm text-gray-400">Director de Finanzas</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Rodrigo+Solares&background=0A2463&color=fff&size=200" alt="Rodrigo Solares" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Rodrigo Solares</h4>
+                    <p class="text-sm text-gray-400">Director de Marketing</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-full border-2 border-white/20 overflow-hidden mb-3 transition group-hover:border-mun-gold">
+                        <img src="https://ui-avatars.com/api/?name=Alexia+Quiroga&background=0A2463&color=fff&size=200" alt="Alexia Quiroga" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-bold">Alexia Quiroga</h4>
+                    <p class="text-sm text-gray-400">Manager Medios y Prensa</p>
                 </div>
             </div>
         </div>
@@ -196,164 +298,173 @@
     <section id="committees" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-sm font-bold tracking-widest text-mun-blue uppercase mb-2">The Forums of Debate</h2>
-                <h3 class="text-3xl md:text-4xl font-serif font-bold text-mun-dark mb-4">Our Committees</h3>
+                <h2 class="text-sm font-bold tracking-widest text-mun-gold uppercase mb-2">Foros y Tópicos</h2>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-mun-blue mb-4">Explore Our Committees</h3>
                 <p class="text-lg text-gray-600">
-                    Explore the diverse range of committees offered at SCISMUN this year. Each council has been selected to address pressing global issues.
+                    Dive into the critical global issues debated in this year's specialized forums.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Committee Card 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover">
-                    <div class="h-48 bg-mun-blue relative overflow-hidden flex items-center justify-center">
-                        <i data-lucide="globe" class="w-24 h-24 text-white opacity-20 absolute"></i>
-                        <h4 class="text-3xl font-serif font-bold text-white relative z-10">GA</h4>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold text-mun-dark">General Assembly</h5>
-                            <span class="bg-blue-100 text-mun-blue text-xs font-bold px-2.5 py-1 rounded-full">Beginner</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">
-                            The main deliberative, policymaking and representative organ of the UN. Topics include climate action frameworks and international security protocols.
-                        </p>
-                        <a href="#" class="text-mun-blue font-semibold hover:text-blue-800 flex items-center gap-1 transition-colors group">
-                            Read Background Guide 
-                            <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Committee Card 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover">
-                    <div class="h-48 bg-mun-dark relative overflow-hidden flex items-center justify-center">
-                        <i data-lucide="shield" class="w-24 h-24 text-white opacity-20 absolute"></i>
-                        <h4 class="text-3xl font-serif font-bold text-white relative z-10">UNSC</h4>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold text-mun-dark">Security Council</h5>
-                            <span class="bg-red-100 text-red-700 text-xs font-bold px-2.5 py-1 rounded-full">Advanced</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">
-                            Charged with ensuring international peace and security. Delegates must be prepared for fast-paced crisis updates and intense diplomatic negotiations.
-                        </p>
-                        <a href="#" class="text-mun-blue font-semibold hover:text-blue-800 flex items-center gap-1 transition-colors group">
-                            Read Background Guide 
-                            <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Committee Card 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover">
-                    <div class="h-48 bg-teal-700 relative overflow-hidden flex items-center justify-center">
-                        <i data-lucide="heart" class="w-24 h-24 text-white opacity-20 absolute"></i>
-                        <h4 class="text-3xl font-serif font-bold text-white relative z-10">WHO</h4>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h5 class="text-xl font-bold text-mun-dark">World Health Org.</h5>
-                            <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2.5 py-1 rounded-full">Intermediate</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">
-                            Directing and coordinating authority on international health within the UN's system. Addressing post-pandemic recovery and healthcare access.
-                        </p>
-                        <a href="#" class="text-mun-blue font-semibold hover:text-blue-800 flex items-center gap-1 transition-colors group">
-                            Read Background Guide 
-                            <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Note for User -->
-            <div class="mt-12 bg-blue-50 border-l-4 border-mun-blue p-4 rounded-r-lg max-w-3xl mx-auto">
-                <div class="flex items-start">
-                    <i data-lucide="info" class="w-5 h-5 text-mun-blue mt-0.5 mr-3 flex-shrink-0"></i>
-                    <p class="text-sm text-blue-800">
-                        <strong>Note for Editor:</strong> Please provide the content from your Word document so I can update these committee names, descriptions, and difficulty levels to match your exact SCISMUN lineup.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section id="schedule" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-sm font-bold tracking-widest text-mun-blue uppercase mb-2">Itinerary</h2>
-                <h3 class="text-3xl md:text-4xl font-serif font-bold text-mun-dark">Conference Schedule</h3>
-            </div>
-
-            <div class="relative border-l-2 border-gray-200 ml-3 md:ml-6">
                 
-                <!-- Day 1 -->
-                <div class="mb-10 relative">
-                    <div class="absolute w-4 h-4 bg-mun-blue rounded-full -left-[9px] top-1 border-4 border-white shadow"></div>
-                    <div class="pl-8">
-                        <h4 class="text-xl font-bold text-mun-dark mb-4 bg-gray-50 inline-block px-4 py-1 rounded-lg border border-gray-100">Day 1: Friday</h4>
-                        
-                        <div class="space-y-6">
-                            <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-6 group">
-                                <div class="text-mun-blue font-bold min-w-[120px]">14:00 - 15:30</div>
-                                <div>
-                                    <h5 class="text-lg font-semibold text-gray-800 group-hover:text-mun-blue transition-colors">Registration & Check-in</h5>
-                                    <p class="text-gray-500 text-sm">Main Auditorium Lobby. Delegates receive placards and materials.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-6 group">
-                                <div class="text-mun-blue font-bold min-w-[120px]">16:00 - 17:30</div>
-                                <div>
-                                    <h5 class="text-lg font-semibold text-gray-800 group-hover:text-mun-blue transition-colors">Opening Ceremony</h5>
-                                    <p class="text-gray-500 text-sm">Keynote speech, Secretariat introduction, and official opening gavel.</p>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-6 group">
-                                <div class="text-mun-blue font-bold min-w-[120px]">18:00 - 20:00</div>
-                                <div>
-                                    <h5 class="text-lg font-semibold text-gray-800 group-hover:text-mun-blue transition-colors">Committee Session I</h5>
-                                    <p class="text-gray-500 text-sm">Roll call, setting the agenda, and opening statements.</p>
-                                </div>
-                            </div>
+                <!-- CSI -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-blue">
+                    <h4 class="text-2xl font-serif font-bold text-mun-blue mb-4 border-b border-gray-100 pb-3">CSI</h4>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            Crisis de Inestabilidad política y colpaso institucional en Pakistán: Amenaza a la seguridad nuclear regional y global.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            Ofensiva de grupos armados coordinada del Estado Islámico en el Sahel: colapso de gobiernos regionales y crisis humanitaria transfronteriza.
                         </div>
                     </div>
                 </div>
 
-                <!-- Day 2 -->
-                <div class="mb-10 relative">
-                    <div class="absolute w-4 h-4 bg-mun-gold rounded-full -left-[9px] top-1 border-4 border-white shadow"></div>
-                    <div class="pl-8">
-                        <h4 class="text-xl font-bold text-mun-dark mb-4 bg-gray-50 inline-block px-4 py-1 rounded-lg border border-gray-100">Day 2: Saturday</h4>
-                        
-                        <div class="space-y-6">
-                            <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-6 group">
-                                <div class="text-mun-blue font-bold min-w-[120px]">09:00 - 12:30</div>
-                                <div>
-                                    <h5 class="text-lg font-semibold text-gray-800 group-hover:text-mun-blue transition-colors">Committee Session II</h5>
-                                    <p class="text-gray-500 text-sm">General speakers list and unmoderated caucuses.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-6 group">
-                                <div class="text-mun-blue font-bold min-w-[120px]">12:30 - 14:00</div>
-                                <div>
-                                    <h5 class="text-lg font-semibold text-gray-800 group-hover:text-mun-blue transition-colors">Lunch Break</h5>
-                                    <p class="text-gray-500 text-sm">Lunch provided in the school cafeteria area.</p>
-                                </div>
-                            </div>
+                <!-- AG -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-gold">
+                    <h4 class="text-2xl font-serif font-bold text-mun-blue mb-4 border-b border-gray-100 pb-3">General Assembly (AG)</h4>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            Reconfiguración del orden mundial y el rol de las potencias emergentes en la prevención de conflictos armados.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            Gobernanza global del uso de inteligencia artificial y sistemas autónomos en escenarios de conflicto.
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="flex flex-col md:flex-row md:items-start gap-2 md:gap-6 group">
-                                <div class="text-mun-blue font-bold min-w-[120px]">14:00 - 18:00</div>
-                                <div>
-                                    <h5 class="text-lg font-semibold text-gray-800 group-hover:text-mun-blue transition-colors">Committee Session III</h5>
-                                    <p class="text-gray-500 text-sm">Drafting working papers and resolutions.</p>
-                                </div>
-                            </div>
+                <!-- ONU Mujeres -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-blue">
+                    <h4 class="text-2xl font-serif font-bold text-mun-blue mb-4 border-b border-gray-100 pb-3">ONU Mujeres</h4>
+                    <div class="text-xs font-bold text-gray-400 mb-2 -mt-2">Comisión de la Condición Jurídica y Social de la Mujer</div>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            Violencia sexual como arma de guerra en conflictos contemporáneos.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            Regulación del ciberacoso, pornografía deepfake, y vigilancia digital contra mujeres.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UNICEF / Foro Junior -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-gold">
+                    <div class="flex justify-between items-start mb-4 border-b border-gray-100 pb-3">
+                        <h4 class="text-2xl font-serif font-bold text-mun-blue">UNICEF</h4>
+                        <span class="bg-blue-100 text-mun-blue text-xs font-bold px-2 py-1 rounded">Foro Junior</span>
+                    </div>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            La educación digital y su impacto en niños durante y después de la pandemia.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            El impacto del cambio climático en la infancia: desplazamientos, salud y acceso a servicios básicos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conference on Disarmament -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-blue">
+                    <div class="flex justify-between items-start mb-4 border-b border-gray-100 pb-3">
+                        <h4 class="text-2xl font-serif font-bold text-mun-blue">Disarmament</h4>
+                        <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">ENG</span>
+                    </div>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Topic A:</strong>
+                            The protection of outer space through the regulation of anti-satellite weapons.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Topic B:</strong>
+                            The right of States to develop nuclear weapons as a deterrent mechanism against external threats.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foro Histórico -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-gold">
+                    <h4 class="text-2xl font-serif font-bold text-mun-blue mb-4 border-b border-gray-100 pb-3">Foro Histórico (FH)</h4>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            La Guerra de Vietnam y el impacto del intervencionismo estadounidense.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            Las guerrillas en latino america y sus influencia en la guerra fría.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foro Nacional -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-blue">
+                    <h4 class="text-2xl font-serif font-bold text-mun-blue mb-4 border-b border-gray-100 pb-3">Foro Nacional (FN)</h4>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            La Transición Política Post-Elecciones del 2025.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            Las Reformas Económicas de 2025-2026 y las Protestas por la Crisis de Combustibles.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ONUDC -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-gold">
+                    <h4 class="text-2xl font-serif font-bold text-mun-blue mb-4 border-b border-gray-100 pb-3">ONUDC</h4>
+                    <div class="text-xs font-bold text-gray-400 mb-2 -mt-2">Oficina de las N.U. contra la Droga y el Delito</div>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            El lavado de activos y el uso de criptomonedas por el crimen organizado.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            El crecimiento del narcotráfico transnacional y su vínculo con la corrupción institucional en Estados frágiles.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- European Parliament -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-blue">
+                    <div class="flex justify-between items-start mb-4 border-b border-gray-100 pb-3">
+                        <h4 class="text-2xl font-serif font-bold text-mun-blue">European Parliament</h4>
+                        <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">ENG</span>
+                    </div>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Topic A:</strong>
+                            The European Migration and Asylum Crisis.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Topic B:</strong>
+                            Banning Fast-Fashion and Creating EU-wide Sustainable Consumption Laws.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SOCHUM -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col h-full border-t-4 border-t-mun-gold lg:col-start-2">
+                    <h4 class="text-2xl font-serif font-bold text-mun-blue mb-4 border-b border-gray-100 pb-3">SOCHUM</h4>
+                    <div class="text-xs font-bold text-gray-400 mb-2 -mt-2">Comité de Asuntos Sociales, Humanitarios y Culturales</div>
+                    <div class="flex-grow space-y-4 text-sm text-gray-600">
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico A:</strong>
+                            El uso de centros de detención para inmigrantes en los Estados Unidos y sus implicaciones legales, éticas y humanitarias.
+                        </div>
+                        <div>
+                            <strong class="text-mun-dark block mb-1">Tópico B:</strong>
+                            La legitimidad de una intervención militar de los Estados Unidos en Venezuela en 2026: responsabilidad humanitaria versus imperialismo geopolítico.
                         </div>
                     </div>
                 </div>
@@ -362,86 +473,82 @@
         </div>
     </section>
 
-    <!-- Registration Call to Action -->
-    <section id="register" class="py-20 relative overflow-hidden">
-        <!-- Background elements -->
-        <div class="absolute inset-0 bg-mun-dark z-0"></div>
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-mun-blue rounded-full blur-3xl opacity-50 z-0"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-mun-gold rounded-full blur-3xl opacity-20 z-0"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6">Ready to Take the Floor?</h2>
-            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                Secure your spot at SCISMUN today. Registration is open for schools and independent delegates.
-            </p>
+    <!-- Countdown Section -->
+    <section id="countdown-sec" class="py-24 connection-pattern relative text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4 drop-shadow-md">Countdown to SCISMUN</h2>
+            <p class="text-mun-gold font-bold text-xl mb-12 tracking-wide uppercase">June 18th, 2026</p>
             
-            <div class="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl max-w-3xl mx-auto shadow-2xl">
-                <form class="space-y-4 text-left">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-200 mb-1">Full Name</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white focus:outline-none focus:border-mun-gold focus:ring-1 focus:ring-mun-gold transition-colors" placeholder="John Doe">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-200 mb-1">Email Address</label>
-                            <input type="email" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white focus:outline-none focus:border-mun-gold focus:ring-1 focus:ring-mun-gold transition-colors" placeholder="john@example.com">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-200 mb-1">School / Institution</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white focus:outline-none focus:border-mun-gold focus:ring-1 focus:ring-mun-gold transition-colors" placeholder="Santa Cruz International School">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-200 mb-1">Message / Delegation Size</label>
-                        <textarea rows="3" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white focus:outline-none focus:border-mun-gold focus:ring-1 focus:ring-mun-gold transition-colors" placeholder="Tell us about your delegation..."></textarea>
-                    </div>
-                    <button type="button" class="w-full bg-mun-gold hover:bg-yellow-500 text-mun-dark font-bold text-lg py-4 rounded-lg transition-colors mt-4">
-                        Submit Registration Inquiry
-                    </button>
-                </form>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 w-32 md:w-40 shadow-xl">
+                    <span id="days" class="block text-4xl md:text-6xl font-bold text-white mb-2">00</span>
+                    <span class="text-mun-gold text-xs md:text-sm font-bold uppercase tracking-wider">Days</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 w-32 md:w-40 shadow-xl">
+                    <span id="hours" class="block text-4xl md:text-6xl font-bold text-white mb-2">00</span>
+                    <span class="text-mun-gold text-xs md:text-sm font-bold uppercase tracking-wider">Hours</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 w-32 md:w-40 shadow-xl">
+                    <span id="minutes" class="block text-4xl md:text-6xl font-bold text-white mb-2">00</span>
+                    <span class="text-mun-gold text-xs md:text-sm font-bold uppercase tracking-wider">Minutes</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 w-32 md:w-40 shadow-xl">
+                    <span id="seconds" class="block text-4xl md:text-6xl font-bold text-white mb-2">00</span>
+                    <span class="text-mun-gold text-xs md:text-sm font-bold uppercase tracking-wider">Seconds</span>
+                </div>
+            </div>
+
+            <div class="mt-16 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-mun-gold hover:bg-yellow-500 text-mun-dark px-8 py-4 rounded-full font-bold transition-all shadow-lg text-center">
+                    Register for Early Bird
+                </a>
+                <a href="#" class="bg-white text-mun-blue px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:bg-gray-100 text-center">
+                    Register as a Delegate
+                </a>
+                <a href="#" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold transition-all hover:bg-white/10 text-center">
+                    Register as a Chair
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
+    <footer class="bg-mun-dark text-gray-300 py-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-8 h-8 bg-mun-blue rounded-full flex items-center justify-center text-white font-serif font-bold">S</div>
+                        <div class="w-8 h-8 bg-mun-blue rounded-full flex items-center justify-center text-white font-serif font-bold border border-mun-gold/30">S</div>
                         <span class="font-serif font-bold text-xl text-white tracking-tight">SCISMUN</span>
                     </div>
-                    <p class="text-sm text-gray-400 max-w-sm mb-6">
-                        Empowering the next generation of global leaders through diplomacy, debate, and collaborative problem-solving in Santa Cruz, Bolivia.
+                    <p class="text-sm text-gray-400 max-w-sm mb-6 leading-relaxed">
+                        Beyond Borders: United Challenges, Shared Solutions.<br>
+                        Empowering the next generation of global leaders through diplomacy and debate in Santa Cruz, Bolivia.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-mun-gold transition-colors">
                             <i data-lucide="instagram" class="w-5 h-5"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <a href="#" class="text-gray-400 hover:text-mun-gold transition-colors">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Quick Links</h4>
+                    <h4 class="text-mun-gold font-bold mb-4 uppercase text-sm tracking-wider">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#home" class="hover:text-mun-gold transition-colors">Home</a></li>
-                        <li><a href="#about" class="hover:text-mun-gold transition-colors">About Secretariat</a></li>
-                        <li><a href="#committees" class="hover:text-mun-gold transition-colors">Committees</a></li>
-                        <li><a href="#schedule" class="hover:text-mun-gold transition-colors">Conference Schedule</a></li>
-                        <li><a href="#register" class="hover:text-mun-gold transition-colors">Registration Info</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Register for Early Bird</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Register as a Delegate</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Register as a Chair</a></li>
+                        <li><a href="#theme" class="hover:text-white transition-colors">Theme: Beyond Borders</a></li>
+                        <li><a href="#committees" class="hover:text-white transition-colors">View Committees</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Contact</h4>
+                    <h4 class="text-mun-gold font-bold mb-4 uppercase text-sm tracking-wider">Contact</h4>
                     <ul class="space-y-3 text-sm">
                         <li class="flex items-start gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-mun-gold flex-shrink-0"></i>
@@ -449,7 +556,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <i data-lucide="mail" class="w-4 h-4 text-mun-gold flex-shrink-0"></i>
-                            <a href="mailto:info@scismun.org" class="hover:text-white transition-colors">info@scismun.org</a>
+                            <a href="mailto:scismun@scis-bo.com" class="hover:text-white transition-colors">scismun@scis-bo.com</a>
                         </li>
                     </ul>
                 </div>
@@ -489,11 +596,38 @@
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
                 nav.classList.add('shadow-md');
-                nav.classList.replace('py-4', 'py-0'); // Compact padding if adjusted
             } else {
                 nav.classList.remove('shadow-md');
             }
         });
+
+        // Countdown Timer Logic
+        const targetDate = new Date("June 18, 2026 00:00:00").getTime();
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            
+        }, 1000);
     </script>
 </body>
 </html>
